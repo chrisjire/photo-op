@@ -1,13 +1,10 @@
-
-
-
 from . import auth
 from flask import render_template,redirect,url_for,flash,request
 from .. import db,mail
 from .forms import RegistrationForm,LoginForm
-from ..models import User,Blog
+from ..models import User
 from flask_login import login_user,logout_user,login_required
-from flask_mail import Message
+
 
 
 @auth.route("/login", methods=['GET','POST'])
@@ -29,12 +26,6 @@ def login():
             flash('Login Unsuccessful.Please check username and Password!','danger')
             return redirect(request.args.get('next') or url_for('main.index'))
     return render_template('login.html',loginF = login_form)
-
-
-
-
-
-
 
 @auth.route('/signup',methods = ["GET","POST"])
 def signup():
