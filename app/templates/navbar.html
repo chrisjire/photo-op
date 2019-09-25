@@ -1,0 +1,25 @@
+<nav class="navbar navbar-inverse ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{{url_for('main.index')}}">Blog</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li ><a href="{{url_for('main.index')}}">Home</a></li>
+        <li><a href="{{url_for('auth.signup')}}">Latest</a></li>
+        <li><a href="{{url_for('auth.signup')}}">Favorites</a></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- {% if current_user.is_authenticated %}
+       
+        <li><a href="{{url_for('main.index',the_user=current_user.username)}}">{{current_user.username}} Profile</a></li>
+        <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+        <li><a href="{{url_for('auth.logout')}}">Post Blog </a></li>
+        {% else %}
+        <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+        <li><a href="{{url_for('auth.login')}}">Subscribe</a></li> -->
+      
+        <!-- {%endif%} -->
+        </ul>
+    </div>
+  </nav>

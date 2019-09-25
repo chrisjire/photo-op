@@ -11,7 +11,7 @@ class User(UserMixin,db.model):
     username = db.Column(db.String(255),unique = True , nullable = False)
     email = db.Column(db.String(255),unique = True, nullable = False)
     passwod = db.Column(db.String(255),nullable = False)
-    comment = db.relationship
+  
     
     def save(self):
       db.session.add(self)
