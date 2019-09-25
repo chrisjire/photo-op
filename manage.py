@@ -1,21 +1,25 @@
-from app import create_app,db  
+from app import create_app,db
+from  flask_migrate import Migrate, MigrateCommand  
 from flask_script import Manager,Server
 from app.models import User
 
 
 app = create_app()
-manager.add_command('runserver',Server)
+
 manager = Manager(app)
+manager.add_command('runserver',Server)
+migrate = Migrate(app,db)
+manager.add_command('db',MigrateCommand)
 
-@maanger.shell
+@manager.shell
 def add_shell():
-    return{"db":db,"User":User,"Blog":Blog,"Comment":Commnet}
+    return{"db":db,"User":User}
 
-@manager.add_command
-def test():
-    import unittest
-    tests = unitest.TestLoader().discover('tests')
-    unittest.TextTestResult(verbosity=5).run(tests)
+# @manager.test
+# def test():
+#     import unittest
+#     tests = unitest.TestLoader().discover('tests')
+#     unittest.TextTestResult(verbosity=5).run(tests)
     
-if __name__ == '__main__':
-    manager.run()
+if __name__=='__main__':
+  manager.run()

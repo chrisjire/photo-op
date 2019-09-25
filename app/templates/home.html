@@ -1,0 +1,37 @@
+
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card" style="width: 60rem;">
+           <h1>Home</h1>
+    <div class="card-body">
+      <ul>
+
+{% for post in blogs %}
+{{post.title}}
+{% endfor %}
+{% for post in blogs %}
+        
+            <h4 class="card-title">Title:{{post.title}}</h4>
+            <h5 class="card-title"> </h5>
+            <h5 class="card-title">Description :{{post.detail}}</h5>
+
+            <h5 class="card-title"> Author :{{post.author}}</h5>
+            <h7 class="card-title"> data.posted {{post.data_posted}}</h7>
+            </ul>
+            <a href="" class="btn btn-primary">Add Comment</a>
+            <a href="#" class="btn btn-success">👍</a>
+            <a href="#" class="btn btn-danger">👎</a>new
+          </ul>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">comments : {{post.comments}}</li>
+              <li class="list-group-item"> i like the article </li>
+             
+            </ul>
+          </div>            
+          
+          
+        {% endfor %}
+{%endblock%}
+

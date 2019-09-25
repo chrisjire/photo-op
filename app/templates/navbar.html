@@ -1,25 +1,49 @@
-<nav class="navbar navbar-inverse ">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="{{url_for('main.index')}}">Blog</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li ><a href="{{url_for('main.index')}}">Home</a></li>
-        <li><a href="{{url_for('auth.signup')}}">Latest</a></li>
-        <li><a href="{{url_for('auth.signup')}}">Favorites</a></li>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark purple-gradient">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">Blog</a>
 
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <!-- {% if current_user.is_authenticated %}
-       
-        <li><a href="{{url_for('main.index',the_user=current_user.username)}}">{{current_user.username}} Profile</a></li>
-        <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
-        <li><a href="{{url_for('auth.logout')}}">Post Blog </a></li>
-        {% else %}
-        <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
-        <li><a href="{{url_for('auth.login')}}">Subscribe</a></li> -->
-      
-        <!-- {%endif%} -->
-        </ul>
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+        <a class="nav-link" href="/">Home
+            <span class="sr-only">(current)</span>
+        </a>
+        <!-- Dropdown -->
+        <li class="nav-item navbar-end dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i> Profile </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink-4" >
+            <ul class="nav navbar-nav navbar-right" >
+                {% if current_user.is_authenticated %}
+                
+                <a class="navbar-brand nav-link dropdown-item" href="{{url_for('auth.logout')}}" style="color:black; font-weight:bolder;">Logout</a></<a>
+                {% else %}
+                <a class="navbar-brand nav-link dropdown-item" href="{{url_for('auth.login')}}" style="color:black; font-weight:bolder;">Log in</a></<a>
+                <a class="navbar-brand nav-link dropdown-item" href="{{url_for('auth.signup')}}" style="color:black; font-weight:bolder;">Sign Up</a></<a>
+                {%endif%}
+            </ul>
+        </div>
+        </li>
+
+    </ul>
+    
     </div>
-  </nav>
+    <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+
+
+
