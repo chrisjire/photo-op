@@ -2,10 +2,6 @@ from .import auth
 from flask import render_template,request,redirect,url_for,flash
 from app.models import User
 from flask_login import login_user,logout_user
-from ..import mail
-from ..import photos,mail
-from flask_mail import Message
-
 
 @auth.route('/login',methods=['POST','GET'])
 def login():
@@ -43,4 +39,9 @@ def signup():
         else:
             flash("Username is already taken","username")
             return render_template('auth/signup.html',email = email, password = password, confirm_password = confirm_password)
-                   
+    return render_template('auth/signup.html')
+
+@auth.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('main.index'))
