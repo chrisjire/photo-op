@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 alembic==0.9.3.dev0
 apturl==0.5.2
 asn1crypto==0.24.0
@@ -96,3 +97,4 @@ wrapt==1.11.2
 WTForms==2.1
 xkit==0.0.0
 zope.interface==4.3.2
+=======
