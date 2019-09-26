@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+virtual
+.env
+*pyc
+__pycache__
+.vscode
+=======
+
 
 =======
 *.pyc
@@ -5,4 +13,6 @@ instance/
 start.sh 
 .vscode
 virtual/
+>>>>>>> origin/Dev
+>>>>>>> origin/Dev
 >>>>>>> origin/Dev
