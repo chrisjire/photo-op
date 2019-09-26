@@ -14,7 +14,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    bio = 
+    bio = db.Column(db.String(255),nullable=Fasle)
     password_hash = db.Column(db.String(255))
     pass_secure= db.Column(db.String(255))
 
@@ -41,14 +41,22 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-# class Comment(db.Model):
-#     __tablename__="comments"
-#     id = db.Column(db.Integer,primary_key=True)
-#     title = db.Column(db.String(255),nullable = False)
-#     detail = db.Column(db.String(255),nullable = False)
-#     date_posted = db.Column(db.DateTime,nullable = False,default = datetime.utcnow)
-#     writer_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
-#     comment = db.relationship('Comment',backref = 'commentphoto',lazy="dynamic")
+class Comment(db.Model):
+    __tablename__="comment_user"
+    id = db.Column(db.Integer,primary_key=True)
+    title = db.Column(db.String(255),nullable = False)
+    detail = db.Column(db.String(255),nullable = False)
+    date_posted = db.Column(db.DateTime,nullable = False,default = datetime.utcnow)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
+    comment = db.relationship('Comment',backref = 'comment_users',lazy="dynamic")
+
+
+class Photographer(db.Model):
+    __tablename__="photo_user"
+    id = db.Column(db.Integer,primary_key=True)
+    title = db.Column(db.String(255),nullable = False)
+    data_posted = db.Column((db.DateTime,nullable=False,default=datetime.utcnow))
+    
   
 
 
