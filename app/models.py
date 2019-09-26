@@ -37,3 +37,4 @@ class User(UserMixin, db.Model):
         
     def __repr__(self):
         return f'User {self.username}'
+>>>>>>> origin/Dev
