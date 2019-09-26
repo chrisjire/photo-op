@@ -40,3 +40,10 @@
     
     
 #     submit = SubmitField('Post')
+    
+    
+# class cartform(FlaskForm):
+#     produc.title = StringField('Title',validators=[DataRequired()])
+#     detail = TextAreaField('Content',validators=[DataRequired()])
+#     product.price =
+#     submit = SubmitField('Post')
