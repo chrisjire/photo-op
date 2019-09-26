@@ -1,8 +1,10 @@
 
+
 =======
 *.pyc
 instance/
 start.sh 
 .vscode
 virtual/
+>>>>>>> origin/Dev
 >>>>>>> origin/Dev
