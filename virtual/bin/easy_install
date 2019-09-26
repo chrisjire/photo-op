@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 #!/home/hidri/Desktop/photo/photo-op/virtual/bin/python3
+=======
+#!/home/fidel/photo-op/virtual/bin/python3.6
+
+>>>>>>> origin/Dev
 # -*- coding: utf-8 -*-
 import re
 import sys

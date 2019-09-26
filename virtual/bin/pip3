@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 #!/home/hidri/Desktop/photo/photo-op/virtual/bin/python3
+=======
+#!/home/fidel/photo-op/virtual/bin/python3.6
+
+>>>>>>> origin/Dev
 # -*- coding: utf-8 -*-
 import re
 import sys
 
+<<<<<<< HEAD
 from pip._internal import main
+=======
+from pip import main
+>>>>>>> origin/Dev
 
 if __name__ == '__main__':
     sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
