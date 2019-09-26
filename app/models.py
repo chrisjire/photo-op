@@ -17,7 +17,6 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(255))
     pass_secure= db.Column(db.String(255))
 
-    
     def save(self):
         db.session.add(self)
         db.session.commit()
@@ -25,8 +24,6 @@ class User(UserMixin, db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-
-
 
     @property
     def password(self):
@@ -40,11 +37,17 @@ class User(UserMixin, db.Model):
     def verify_password(self,password):
         return check_password_hash(self.pass_secure,password)
 
-   
-    
     def __repr__(self):
         return f'User {self.username}'
 
-
+# class Comment(db.Model):
+#     __tablename__="comments"
+#     id = db.Column(db.Integer,primary_key=True)
+#     title = db.Column(db.String(255),nullable = False)
+#     detail = db.Column(db.String(255),nullable = False)
+#     date_posted = db.Column(db.DateTime,nullable = False,default = datetime.utcnow)
+#     writer_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
+#     comment = db.relationship('Comment',backref = 'commentphoto',lazy="dynamic")
+  
 
 

@@ -8,10 +8,10 @@ from .. import db
 
 
 @auth.route("/")
-@auth.route("/index")
-def index():
+@auth.route("/home")
+def home():
 
-  return render_template('index.html')
+  return render_template('home.html')
 
 @auth.route('/signup',methods = ["GET","POST"])
 def signup():
@@ -32,7 +32,7 @@ def login():
         user = User.query.filter_by(email = form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user,form.remember.data)
-            return redirect(request.args.get('next') or url_for('auth.index'))
+        return url_for('auth.home')
         flash('Invalid username or Password')
     title = "Login"
     return render_template('login.html',form =form,title=title)
@@ -41,4 +41,5 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("auth.index"))
+    return redirect(url_for("auth.home"))
+
