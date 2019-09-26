@@ -75,7 +75,7 @@ def new_post():
 def all_posts():
     posts = Post.query.order_by(Post.date_posted.desc()).all()
 
-    title = 'Blog posts'
+    title = 'photo posts'
 
     return render_template('posts.html', title = title, posts = posts)
 
@@ -152,7 +152,7 @@ def update_post(id):
 def user_photos(uname):
     user = User.query.filter_by(username=uname).first()
     photos = Post.query.filter_by(user_id = user.id).all()
-    # photos_count = Blog.count_photos(uname)
+    # photos_count = photo.count_photos(uname)
     user_joined = user.date_joined.strftime('%b %d, %Y')
 
     return render_template("profile/photos.html", user=user, posts=photos,date = user_joined)
