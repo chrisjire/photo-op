@@ -1,5 +1,10 @@
-virtual/
-.env
-*pyc
-__pycache__
+
+
+=======
+*.pyc
+instance/
+start.sh 
 .vscode
+virtual/
+>>>>>>> origin/Dev
+>>>>>>> origin/Dev
