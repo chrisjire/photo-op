@@ -1,5 +1,4 @@
-<
-=======
+
 from app import create_app, db
 from flask_script import Manager,Server
 from app.models import User
@@ -13,7 +12,7 @@ manager = Manager(app)
 manager.add_command('server',Server)
 
 
->>>>>>> origin/Dev
+
 migrate = Migrate(app,db)
 manager.add_command('db',MigrateCommand)
 
@@ -24,4 +23,3 @@ def make_shell_context():
 
 if __name__ == '__main__':
     manager.run()
->>>>>>> origin/Dev
