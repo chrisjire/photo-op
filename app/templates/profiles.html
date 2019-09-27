@@ -1,0 +1,24 @@
+{% endif %}
+</div>
+</div>
+<div class="col-md-9">
+    <p>Name: {{user.firstname}} {{user.lastname}} </p>
+    <p>No of photos: {{photoss}}</p>
+    <p>Date joined: {{date}}</p>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3> Bio </h3>
+
+        <!--Displaying user bio-->
+        {% if user.bio %}
+        <p> {{user.bio}}</p>
+        {%else%}
+        <p> {{user.username| capitalize}} has no bio </p>
+        {% endif %} {% if user == current_user %}
+        <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a> {% endif %}
+    </div>
+</div>
+</div>
+{% endblock %}

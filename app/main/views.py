@@ -1,14 +1,64 @@
-<<<<<<< HEAD
-from . import main
+from flask import render_template, request, redirect,flash, url_for, abort  
+from . import main  
 from ..models import User,Post,Comment
-from .. import db
+from .. import db, photos
 from .forms import PostForm,CommentForm,UpdateProfile
-from flask import render_template,redirect,url_for,abort
 from flask_login import login_required,current_user
-from ..email import mail_message
 import datetime
 import json 
 import urllib.request,json
+
+
+@main.route('/')
+def index():
+    
+    '''
+    View root page function that returns the index page and its q
+    '''
+    title = 'Home - Welcome to The best Post Website Online'
+    
+    return render_template('index.html', title = title)
+
+@main.route('/cam')
+def cameraman():
+    
+    '''
+    View root page function that returns the index page and its q
+    '''
+    
+    return render_template('Cameraman.html')
+
+@main.route('/cameraman1')
+def cameraman1():
+    return render_template('Cameraman-1.html')
+@main.route('/cameraman2')
+def cameraman2():
+    return render_template('Cameraman-2.html') 
+@main.route('/cameraman3')
+def cameraman3():
+    return render_template('Cameraman-3.html') 
+@main.route('/cameraman4')
+def cameraman4():
+    return render_template('Cameraman-4.html') 
+@main.route('/cameraman5')
+def cameraman5():
+    return render_template('Cameraman-5.html') 
+@main.route('/cameraman6')
+def cameraman6():
+    return render_template('Cameraman-6.html')    
+
+@main.route('/user/<uname>/up-pic', methods=['GET', 'POST'])
+@login_required
+def updates_pic():
+    user = User.query.all()
+    '''
+    View root page function that returns the index page and its q
+    '''
+    
+    return render_template('profile/pic.html', user=user)
+
+
+
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -23,35 +73,35 @@ def profile(uname):
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
 def update_profile(uname):
-   user = User.query.filter_by(username = uname).first()
-   if user is None:
-       abort(404)
+    user = User.query.filter_by(username = uname).first()
+    if user is None:
+        abort(404)
+    
+    form = UpdateProfile()
 
-   form = UpdateProfile()
+    if form.validate_on_submit():
+        user.bio = form.bio.data
 
-   if form.validate_on_submit():
-       user.bio = form.bio.data
+        db.session.add(user)
+        db.session.commit()
 
-       db.session.add(user)
-       db.session.commit()
+        return redirect(url_for('.profile',uname=user.username))
 
-       return redirect(url_for('.profile',uname=user.username))
-
-   return render_template('profile/update.html',form =form)
+    return render_template('profile/update.html',form =form)
 
 
-@main.route('/user/<uname>/update/pic', methods=['POST'])
+@main.route('/user/<uname>/update/pic', methods=['GET','POST'])
 @login_required
 def update_pic(uname):
-   user = User.query.filter_by(username = uname).first()
+    user = User.query.filter_by(username = uname).first()
 
-   if 'photo' in request.files:
-       filename = photos.save(request.files['photo'])
-       path = f'photos/{filename}'
-       user.profile_pic_path = path
-       db.session.commit()
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photos/{filename}'
+        user.profile_pic_path = path
+        db.session.commit()
 
-   return redirect(url_for('main.profile',uname=uname))
+    return redirect(url_for('main.profile',uname=uname))
 
 @main.route('/post/new', methods = ['GET','POST'])
 @login_required
@@ -157,23 +207,3 @@ def user_photos(uname):
     user_joined = user.date_joined.strftime('%b %d, %Y')
 
     return render_template("profile/photos.html", user=user, posts=photos,date = user_joined)
-=======
-from flask import render_template, request, redirect,flash, url_for, abort  
-from . import main  
-from ..models import User
-from flask_login import login_required, current_user
-from .. import db, photos
-import datetime
-
-
-@main.route('/')
-def index():
-    
-    '''
-    View root page function that returns the index page and its q
-    '''
-    title = 'Home - Welcome to The best Blog Website Online'
-    
-    return render_template('index.html', title = title)
-
->>>>>>> origin/Dev
