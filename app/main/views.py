@@ -29,6 +29,7 @@ def cameraman():
     
     return render_template('Cameraman.html')
 
+
 @main.route('/cameraman1')
 def cameraman1():
     return render_template('Cameraman-1.html')
