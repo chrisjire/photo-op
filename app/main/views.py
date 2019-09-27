@@ -28,6 +28,25 @@ def cameraman():
     
     return render_template('Cameraman.html')
 
+@main.route('/cameraman1')
+def cameraman1():
+    return render_template('Cameraman-1.html')
+@main.route('/cameraman2')
+def cameraman2():
+    return render_template('Cameraman-2.html') 
+@main.route('/cameraman3')
+def cameraman3():
+    return render_template('Cameraman-3.html') 
+@main.route('/cameraman4')
+def cameraman4():
+    return render_template('Cameraman-4.html') 
+@main.route('/cameraman5')
+def cameraman5():
+    return render_template('Cameraman-5.html') 
+@main.route('/cameraman6')
+def cameraman6():
+    return render_template('Cameraman-6.html')    
+
 @main.route('/user/<uname>/up-pic', methods=['GET', 'POST'])
 @login_required
 def updates_pic():
