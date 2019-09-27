@@ -1,3 +1,4 @@
+
 from flask import render_template, request, redirect,flash, url_for, abort  
 from . import main  
 from ..models import User,Post,Comment
@@ -207,3 +208,4 @@ def user_photos(uname):
     user_joined = user.date_joined.strftime('%b %d, %Y')
 
     return render_template("profile/photos.html", user=user, posts=photos,date = user_joined)
+>>>>>>> origin/Dev
