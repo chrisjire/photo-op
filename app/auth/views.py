@@ -32,7 +32,7 @@ def login():
         user = User.query.filter_by(email = form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user,form.remember.data)
-        return url_for('auth.home')
+        return redirect (url_for('main.Cameraman'))
         flash('Invalid username or Password')
     title = "Login"
     return render_template('login.html',form =form,title=title)
@@ -41,5 +41,5 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("auth.home"))
+    return redirect(url_for("main.index"))
 
