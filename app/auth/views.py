@@ -4,26 +4,22 @@ from flask_login import login_user,logout_user,login_required
 from ..models import User
 from .forms import RegistrationForm, LoginForm
 from .. import db
+from ..email import mail_message
 
-
-
-@auth.route("/")
-@auth.route("/home")
-def home():
-
-  return render_template('home.html')
-
-@auth.route('/signup',methods = ["GET","POST"])
-def signup():
+@auth.route('/register',methods = ["GET","POST"])
+def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email = form.email.data, username = form.username.data,password = form.password.data)
+        user = User(email = form.email.data, username = form.username.data,firstname= form.firstname.data,lastname= form.lastname.data,password = form.password.data)
         db.session.add(user)
         db.session.commit()
-        # user = User(form.password.data)
+
+        mail_message("Welcome Post","email/welcome_user",user.email,user=user)
+
+
         return redirect(url_for('auth.login'))
         title = "New Account"
-    return render_template('signup.html',form =form)
+    return render_template('auth/register.html',form =form)
 
 @auth.route('/login',methods=['GET','POST'])
 def login():
@@ -32,14 +28,15 @@ def login():
         user = User.query.filter_by(email = form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user,form.remember.data)
-        return url_for('auth.home')
+            return redirect(request.args.get('next') or url_for('main.index'))
+
         flash('Invalid username or Password')
+
     title = "Login"
-    return render_template('login.html',form =form,title=title)
+    return render_template('auth/login.html',form =form,title=title)
 
 @auth.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("auth.home"))
-
+    return redirect(url_for("main.index"))
