@@ -4,14 +4,11 @@ from flask_login import UserMixin
 from . import login_manager
 from datetime import datetime 
 
-<<<<<<< HEAD
-    
 
-=======
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
->>>>>>> 5c6141df8cc788006b8bdba118d4cee370cb6a5c
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     
